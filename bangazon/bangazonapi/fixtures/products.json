@@ -1,0 +1,47 @@
+[
+    {
+        "model": "bangazonapi.product",
+        "pk": 1,
+        "fields": {
+            "name": "Schwinn 10 speed",
+            "customer": 1,
+            "price": 300,
+            "description": "Available in red, green, and blue",
+            "quantity": 9,
+            "location": "Brentwood",
+            "imagePath": "",
+            "createdAt": "2019-12-12",
+            "productType": 1
+        }
+    },
+    {
+        "model": "bangazonapi.product",
+        "pk": 2,
+        "fields": {
+            "name": "Lakers hat",
+            "customer": 1,
+            "price": 12,
+            "description": "Honor the greatest scorer of his generation.  A poor mans Michael, the Mamba lives on.",
+            "quantity": 47,
+            "location": "East Nashville",
+            "imagePath": "",
+            "createdAt": "2020-02-12",
+            "productType": 2
+        }
+    },
+    {
+        "model": "bangazonapi.product",
+        "pk": 3,
+        "fields": {
+            "name": "Giant Off Road Bike",
+            "customer": 2,
+            "price": 450,
+            "description": "Knobby tires, 14 speed, trail bike",
+            "quantity": 2,
+            "location": "Germantown",
+            "imagePath": "",
+            "createdAt": "2019-04-12",
+            "productType": 1
+        }
+    }
+]

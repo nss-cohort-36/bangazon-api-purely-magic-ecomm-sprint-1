@@ -1,0 +1,29 @@
+[
+    {
+        "model": "bangazonapi.order",
+        "pk": 1,
+        "fields": {
+            "customer": 1,
+            "paymentType": 1,
+            "createdAt": "2019-12-19"
+        }
+    },
+    {
+        "model": "bangazonapi.order",
+        "pk": 2,
+        "fields": {
+            "customer": 2,
+            "paymentType": 2,
+            "createdAt": "2020-01-14"
+        }
+    },
+    {
+        "model": "bangazonapi.order",
+        "pk": 3,
+        "fields": {
+            "customer": 2,
+            "paymentType": 1,
+            "createdAt": "2020-01-03"
+        }
+    }
+]
