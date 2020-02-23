@@ -8,8 +8,8 @@ from django.dispatch import receiver
 
 class PaymentType(models.Model):
 
-    merchantName = models.CharField(max=25)
-    accountNumber = models.CharField(max=25)
+    merchantName = models.CharField(max_length=25)
+    accountNumber = models.CharField(max_length=25)
     expirationDate = models.DateTimeField()
     customer = models.ForeignKey("Customer", on_delete=models.DO_NOTHING)
     createdAt = models.DateTimeField()
