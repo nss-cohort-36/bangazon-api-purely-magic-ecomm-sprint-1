@@ -1,0 +1,35 @@
+[
+    {
+        "model": "bangazonapi.payment_type",
+        "pk": 1,
+        "fields": {
+            "merchantName": "O Positive",
+            "accountNumber": "1234",
+            "expirationDate": "2021-01-01",
+            "customer": 1,
+            "createdAt": "2019-12-12"
+        }
+    },
+    {
+        "model": "bangazonapi.payment_type",
+        "pk": 2,
+        "fields": {
+            "merchantName": "A Negative",
+            "accountNumber": "99988833",
+            "expirationDate": "2024-01-01",
+            "customer": 1,
+            "createdAt": "2019-01-01"
+        }
+    },
+    {
+        "model": "bangazonapi.payment_type",
+        "pk": 3,
+        "fields": {
+            "merchantName": "True Blood",
+            "accountNumber": "1429",
+            "expirationDate": "2022-01-01",
+            "customer": 2,
+            "createdAt": "2020-01-12"
+        }
+    }
+]

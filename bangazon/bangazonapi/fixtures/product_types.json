@@ -1,0 +1,16 @@
+[
+    {
+        "model": "bangazonapi.product_type",
+        "pk": 1,
+        "fields": {
+            "name": "medicinal"
+        }
+    },
+    {
+        "model": "bangazonapi.product_type",
+        "pk": 2,
+        "fields": {
+            "name": "accessories"
+        }
+    }
+]
