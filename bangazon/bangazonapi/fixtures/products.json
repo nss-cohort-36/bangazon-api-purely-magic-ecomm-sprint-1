@@ -3,10 +3,10 @@
         "model": "bangazonapi.product",
         "pk": 1,
         "fields": {
-            "name": "Schwinn 10 speed",
+            "name": "anti-garlic tablets",
             "customer": 1,
-            "price": 300,
-            "description": "Available in red, green, and blue",
+            "price": 9,
+            "description": "12 hour slow release tablets to offset the dangers of Italian food",
             "quantity": 9,
             "location": "Brentwood",
             "imagePath": "",
@@ -18,10 +18,10 @@
         "model": "bangazonapi.product",
         "pk": 2,
         "fields": {
-            "name": "Lakers hat",
+            "name": "10000 SPI sunblock",
             "customer": 1,
             "price": 12,
-            "description": "Honor the greatest scorer of his generation.  A poor mans Michael, the Mamba lives on.",
+            "description": "For the times you absolutely, positively CAN'T get underground by dawn.",
             "quantity": 47,
             "location": "East Nashville",
             "imagePath": "",
@@ -33,15 +33,15 @@
         "model": "bangazonapi.product",
         "pk": 3,
         "fields": {
-            "name": "Giant Off Road Bike",
+            "name": "white strips",
             "customer": 2,
             "price": 450,
-            "description": "Knobby tires, 14 speed, trail bike",
+            "description": "Form fitting teeth whitening strips.  Make your fangs new again!",
             "quantity": 2,
             "location": "Germantown",
             "imagePath": "",
             "createdAt": "2019-04-12",
-            "productType": 1
+            "productType": 2
         }
     }
 ]

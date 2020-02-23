@@ -3,7 +3,7 @@
         "model": "bangazonapi.payment_type",
         "pk": 1,
         "fields": {
-            "merchantName": "Visa",
+            "merchantName": "O Positive",
             "accountNumber": "1234",
             "expirationDate": "2021-01-01",
             "customer": 1,
@@ -14,7 +14,7 @@
         "model": "bangazonapi.payment_type",
         "pk": 2,
         "fields": {
-            "merchantName": "Mastercard",
+            "merchantName": "A Negative",
             "accountNumber": "99988833",
             "expirationDate": "2024-01-01",
             "customer": 1,
@@ -25,7 +25,7 @@
         "model": "bangazonapi.payment_type",
         "pk": 3,
         "fields": {
-            "merchantName": "Discover",
+            "merchantName": "True Blood",
             "accountNumber": "1429",
             "expirationDate": "2022-01-01",
             "customer": 2,

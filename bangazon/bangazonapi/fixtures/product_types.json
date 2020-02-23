@@ -3,14 +3,14 @@
         "model": "bangazonapi.product_type",
         "pk": 1,
         "fields": {
-            "name": "Bicycles"
+            "name": "medicinal"
         }
     },
     {
         "model": "bangazonapi.product_type",
         "pk": 2,
         "fields": {
-            "name": "Hatwear"
+            "name": "accessories"
         }
     }
 ]
