@@ -3,12 +3,10 @@ from django.db.models import F
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-
-
 class Product(models.Model):
 
     name = models.CharField(max_length=50)
-    price = models.DecimalField(decimal_places=2)
+    price = models.DecimalField(max_digits=5, decimal_places=2)
     description = models.CharField(max_length=255)
     quantity = models.IntegerField()
     location = models.CharField(max_length=75)

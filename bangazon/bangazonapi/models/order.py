@@ -6,7 +6,6 @@ from django.dispatch import receiver
 from safedelete.models import SafeDeleteModel
 from safedelete.models import SOFT_DELETE
 
-
 class Order(models.Model):
 
     createdAt = models.DateTimeField()
