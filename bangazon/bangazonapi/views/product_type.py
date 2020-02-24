@@ -30,7 +30,7 @@ class ProductTypes(ViewSet):
         new_product_type = ProductType()
         new_product_type.name = request.data["name"]
 
-        new_producttype.save()
+        new_product_type.save()
 
         serializer = ProductTypeSerializer(new_product_type, context={'request': request})
 
@@ -56,7 +56,7 @@ class ProductTypes(ViewSet):
             product_type, many = True, context={'request':request})
 
         return Response(serializer.data)
-        
+
 
     #handles PUT
     def update(self, request, pk=None):
