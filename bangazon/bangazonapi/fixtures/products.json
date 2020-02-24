@@ -34,7 +34,7 @@
         "pk": 3,
         "fields": {
             "name": "white strips",
-            "customer": 2,
+            "customer": 1,
             "price": 450,
             "description": "Form fitting teeth whitening strips.  Make your fangs new again!",
             "quantity": 2,
