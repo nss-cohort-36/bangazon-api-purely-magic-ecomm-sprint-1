@@ -15,4 +15,4 @@ class PaymentType(models.Model):
         return f'{self.merchantName}'
 
     class Meta:
-        ordering = (merchantName,)
+        ordering = ("merchantName",)

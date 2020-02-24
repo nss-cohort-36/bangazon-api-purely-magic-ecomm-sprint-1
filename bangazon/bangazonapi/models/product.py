@@ -19,4 +19,4 @@ class Product(models.Model):
         return f'{self.name}'
 
     class Meta:
-        ordering = (name,)
+        ordering = ("name",)
