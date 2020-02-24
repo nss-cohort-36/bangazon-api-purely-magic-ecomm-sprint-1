@@ -1,6 +1,6 @@
 [
     {
-        "model": "bangazonapi.payment_type",
+        "model": "bangazonapi.PaymentType",
         "pk": 1,
         "fields": {
             "merchantName": "O Positive",
@@ -11,7 +11,7 @@
         }
     },
     {
-        "model": "bangazonapi.payment_type",
+        "model": "bangazonapi.PaymentType",
         "pk": 2,
         "fields": {
             "merchantName": "A Negative",
@@ -22,7 +22,7 @@
         }
     },
     {
-        "model": "bangazonapi.payment_type",
+        "model": "bangazonapi.PaymentType",
         "pk": 3,
         "fields": {
             "merchantName": "True Blood",
