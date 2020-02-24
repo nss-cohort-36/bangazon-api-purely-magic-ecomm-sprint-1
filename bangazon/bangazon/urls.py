@@ -17,9 +17,12 @@ Including another URLconf
 from django.urls import include, path
 from rest_framework import routers
 from rest_framework.authtoken.views import obtain_auth_token
+from bangazonapi.views import Products
+from bangazonapi.models import *
 
 
 router = routers.DefaultRouter(trailing_slash=False)
+router.register(r'products', Products, 'product')
 
 
 urlpatterns = [
