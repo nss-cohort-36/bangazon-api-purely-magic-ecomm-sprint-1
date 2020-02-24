@@ -19,10 +19,11 @@ from rest_framework import routers
 from rest_framework.authtoken.views import obtain_auth_token
 from bangazonapi.models import *
 from bangazonapi.views import register_user, login_user
-# from bangazon.bangazonapi.views import register_user, login_user
+from bangazonapi.views import OrderProduct
 
 
 router = routers.DefaultRouter(trailing_slash=False)
+router.register(r'order_products', OrderProduct, 'order_product')
 
 
 urlpatterns = [
