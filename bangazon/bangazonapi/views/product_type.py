@@ -35,7 +35,7 @@ class ProductTypes(ViewSet):
         serializer = ProductTypeSerializer(new_producttype, context={'request': request})
 
         return Response(serializer.data)
-        
+
 
     #handles GET for a single product type
     def retrieve(self, request, pk=None):
@@ -46,3 +46,13 @@ class ProductTypes(ViewSet):
             return Response(serializer.data)
         except Exception as ex:
             return HttpResponseServerError(ex)
+
+
+    #handles Get request to list ALL product_types
+    def list(self, request):
+        product_types = ProductType.objects.all()
+
+        serializer = ProductTypeSerializer(
+            product_types, many = True, context={'request':request})
+
+        return Response(serializer.data)
