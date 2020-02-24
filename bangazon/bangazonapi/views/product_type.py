@@ -56,6 +56,17 @@ class ProductTypes(ViewSet):
             product_type, many = True, context={'request':request})
 
         return Response(serializer.data)
+        
+
+    #handles PUT
+    def update(self, request, pk=None):
+       
+        product_type = ProductType.objects.get(pk=pk)
+        product_type.starttime = request.data['name']
+
+        product_type.save()
+
+        return Response({}, status=status.HTTP_204_NO_CONTENT)
 
 
     #handles DELETE and returns serialized detail of deleted product type
