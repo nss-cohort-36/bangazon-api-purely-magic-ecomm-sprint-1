@@ -2,3 +2,4 @@ BangazonEnv/
 db.sqlite3
 __pycache__/
 .vscode/
+migrations/
