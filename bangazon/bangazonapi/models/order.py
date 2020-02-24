@@ -6,7 +6,7 @@ from safedelete.models import SOFT_DELETE
 
 class Order(models.Model):
 
-    createdAt = models.DateTimeField()
+    createdAt = models.DateTimeField(auto_now=False, auto_now_add=True)
     customer = models.ForeignKey("Customer", on_delete=models.DO_NOTHING)
     paymentType = models.ForeignKey("PaymentType", on_delete=models.DO_NOTHING)
 

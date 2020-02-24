@@ -18,11 +18,13 @@ from django.urls import include, path
 from rest_framework import routers
 from rest_framework.authtoken.views import obtain_auth_token
 from bangazonapi.models import *
+from bangazonapi.views import Orders
 from bangazonapi.views import register_user, login_user
 # from bangazon.bangazonapi.views import register_user, login_user
 
 
 router = routers.DefaultRouter(trailing_slash=False)
+router.register(r'orders', Orders, 'order')
 
 
 urlpatterns = [
