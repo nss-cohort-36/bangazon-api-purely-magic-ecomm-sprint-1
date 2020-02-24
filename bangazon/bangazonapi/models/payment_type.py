@@ -1,10 +1,7 @@
 from django.db import models
-from django.db.models import F
-from django.contrib.auth.models import User
-from django.db.models.signals import post_save
-from django.dispatch import receiver
-
-
+from .customer import Customer
+from safedelete.models import SafeDeleteModel
+from safedelete.models import SOFT_DELETE
 
 class PaymentType(models.Model):
 
@@ -18,4 +15,4 @@ class PaymentType(models.Model):
         return f'{self.merchantName}'
 
     class Meta:
-        ordering = (F('user.date_joined').asc(nulls_last=True),)
+        ordering = (merchantName,)

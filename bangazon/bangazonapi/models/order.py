@@ -1,8 +1,6 @@
 from django.db import models
-from django.db.models import F
-from django.contrib.auth.models import User
-from django.db.models.signals import post_save
-from django.dispatch import receiver
+from .customer import Customer
+from .payment_type import PaymentType
 from safedelete.models import SafeDeleteModel
 from safedelete.models import SOFT_DELETE
 
@@ -17,5 +15,7 @@ class Order(models.Model):
         return f'{self.first_name} {self.last_name}'
 
     class Meta:
-        ordering = (F('user.date_joined').asc(nulls_last=True),)
+        ordering = (createdAt,)
+
+
 

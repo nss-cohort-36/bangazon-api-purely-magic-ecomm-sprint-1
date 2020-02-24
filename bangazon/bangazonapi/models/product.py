@@ -1,7 +1,6 @@
 from django.db import models
-from django.db.models import F
-from django.db.models.signals import post_save
-from django.dispatch import receiver
+from .customer import Customer
+from .product_type import ProductType
 
 class Product(models.Model):
 
@@ -20,4 +19,4 @@ class Product(models.Model):
         return f'{self.name}'
 
     class Meta:
-        ordering = (F('user.date_joined').asc(nulls_last=True),)
+        ordering = (name,)
