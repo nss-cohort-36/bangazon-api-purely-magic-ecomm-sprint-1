@@ -1,6 +1,6 @@
 [
     {
-        "model": "bangazonapi.payment_type",
+        "model": "bangazonapi.PaymentType",
         "pk": 1,
         "fields": {
             "merchantName": "O Positive",
@@ -11,7 +11,7 @@
         }
     },
     {
-        "model": "bangazonapi.payment_type",
+        "model": "bangazonapi.PaymentType",
         "pk": 2,
         "fields": {
             "merchantName": "A Negative",
@@ -22,13 +22,13 @@
         }
     },
     {
-        "model": "bangazonapi.payment_type",
+        "model": "bangazonapi.PaymentType",
         "pk": 3,
         "fields": {
             "merchantName": "True Blood",
             "accountNumber": "1429",
             "expirationDate": "2022-01-01",
-            "customer": 2,
+            "customer": 1,
             "createdAt": "2020-01-12"
         }
     }

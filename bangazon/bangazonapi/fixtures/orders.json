@@ -1,6 +1,6 @@
 [
     {
-        "model": "bangazonapi.order",
+        "model": "bangazonapi.Order",
         "pk": 1,
         "fields": {
             "customer": 1,
@@ -9,19 +9,19 @@
         }
     },
     {
-        "model": "bangazonapi.order",
+        "model": "bangazonapi.Order",
         "pk": 2,
         "fields": {
-            "customer": 2,
+            "customer": 1,
             "paymentType": 2,
             "createdAt": "2020-01-14"
         }
     },
     {
-        "model": "bangazonapi.order",
+        "model": "bangazonapi.Order",
         "pk": 3,
         "fields": {
-            "customer": 2,
+            "customer": 1,
             "paymentType": 1,
             "createdAt": "2020-01-03"
         }

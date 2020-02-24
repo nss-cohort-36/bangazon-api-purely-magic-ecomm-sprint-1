@@ -1,6 +1,6 @@
 [
     {
-        "model": "bangazonapi.product",
+        "model": "bangazonapi.Customer",
         "pk": 1,
         "fields": {
             "isActive": 0,
