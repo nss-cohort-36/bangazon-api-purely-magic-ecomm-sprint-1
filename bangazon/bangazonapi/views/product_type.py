@@ -24,12 +24,21 @@ class ProductTypeSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class ProductTypes(ViewSet):
-    def retrieve(self, request, pk=None):
-        """Handle GET requests for single product type
-        Returns:
-            Response -- JSON serialized product type instance
-        """
 
+    #handles POST
+    def create(self, request):
+        new_producttype = ProductType()
+        new_producttype.name = request.data["name"]
+
+        new_producttype.save()
+
+        serializer = ProductTypeSerializer(new_producttype, context={'request': request})
+
+        return Response(serializer.data)
+        
+
+    #handles GET for a single product type
+    def retrieve(self, request, pk=None):
         try:
             product_type = ProductType.objects.get(pk=pk)
             serializer = ProductTypeSerializer(product_type,
