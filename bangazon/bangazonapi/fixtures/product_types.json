@@ -8,7 +8,7 @@
     },
     {
         "model": "bangazonapi.ProductType",
-        "pk": 1,
+        "pk": 2,
         "fields": {
             "name": "accessories"
         }

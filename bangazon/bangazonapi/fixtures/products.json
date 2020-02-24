@@ -26,7 +26,7 @@
             "location": "East Nashville",
             "imagePath": "",
             "createdAt": "2020-02-12",
-            "productType": 2
+            "productType": 1
         }
     },
     {
@@ -41,7 +41,7 @@
             "location": "Germantown",
             "imagePath": "",
             "createdAt": "2019-04-12",
-            "productType": 2
+            "productType": 1
         }
     }
 ]
