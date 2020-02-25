@@ -7,7 +7,7 @@ from django.dispatch import receiver
 class Customer(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    # isActive = models.BooleanField(null=False)
+    
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
