@@ -20,7 +20,6 @@ class ProductTypeSerializer(serializers.HyperlinkedModelSerializer):
         )
         #the fields are the columns you want to include in the database
         fields = ('id', 'name')
-        depth = 2
 
 
 class ProductTypes(ViewSet):
