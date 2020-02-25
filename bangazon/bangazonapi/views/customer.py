@@ -1,4 +1,4 @@
-"""View module for handling requests about product types"""
+"""View module for handling requests about customers"""
 from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
@@ -19,8 +19,8 @@ class CustomerSerializer(serializers.HyperlinkedModelSerializer):
             lookup_field='id'
         )
         #the fields are the columns you want to include in the database
-        fields = ('id',)
-        # depth = 2
+        fields = ('id', 'user')
+        depth = 2
 
 class Customers(ViewSet):
 
