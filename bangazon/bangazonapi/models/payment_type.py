@@ -16,3 +16,6 @@ class PaymentType(models.Model):
 
     class Meta:
         ordering = ("merchantName",)
+
+
+
