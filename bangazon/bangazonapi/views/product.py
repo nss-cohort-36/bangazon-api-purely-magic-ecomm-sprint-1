@@ -18,7 +18,8 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
             view_name='product',
             lookup_field='id'
         )
-        fields = ('id', 'url', 'name', 'productType',)
+        fields = ('id', 'url', 'name', 'productType_id','customer_id', 'productType')
+        # fields = ('id', 'url', 'name', 'customer',)
         depth = 2
 
 class Products(ViewSet):
@@ -29,7 +30,7 @@ class Products(ViewSet):
             Response -- JSON serialized product instance
         """
         try:
-            product = product.objects.get(pk=pk)
+            product = Product.objects.get(pk=pk)
             serializer = ProductSerializer(product, context={'request': request})
             return Response(serializer.data)
         except Exception as ex:
@@ -55,11 +56,22 @@ class Products(ViewSet):
             Response -- JSON serialized list of products
         """
         items = Product.objects.all()
+        # product_list = []
+
+        # for item in items:
+        #    new_product = Product()
+        #    new_product.productType_id = ProductType.objects.get(pk=item.productType_id)
+        #    new_product.id = item.id
+        #    new_product.name = item.name
+        #    new_product.customer_id =  Customer.objects.get(pk=item.customer_id)
+        #    product_list.append(new_product)
+
+
 
         # test
         customer = self.request.query_params.get('customer', None)
         if customer is not None:
-            items = items.filter(customer__id=customer)
+            items = items.filter(customer_id=customer)
 
         serializer = ProductSerializer(
             items,
