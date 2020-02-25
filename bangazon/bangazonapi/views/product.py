@@ -18,7 +18,7 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
             view_name='product',
             lookup_field='id'
         )
-        fields = ('id', 'url', 'name', 'productType_id','customer_id', 'productType')
+        fields = ('id', 'url', 'name', 'customer', 'productType', 'price', 'description', 'quantity', 'location', 'imagePath', 'createdAt')
         # fields = ('id', 'url', 'name', 'customer',)
         depth = 2
 
@@ -39,8 +39,13 @@ class Products(ViewSet):
     def create(self, request):
         new_product = Product()
         new_product.name = request.data["name"]
-        new_product.customer_id = request.auth.user.id
+        new_product.customer = Customer.objects.get(user=request.auth.user.id)
         new_product.productType_id = request.data["productType_id"]
+        new_product.price = request.data["price"]
+        new_product.description = request.data["description"]
+        new_product.quantity = request.data["quantity"]
+        new_product.location = request.data["location"]
+        new_product.imagePath = request.data["imagePath"]
 
         new_product.save()
 
@@ -89,7 +94,11 @@ class Products(ViewSet):
       item = Product.objects.get(pk=pk)
       item.name = request.data["name"]
       item.productType_id = request.data["productType_id"]
-      item.customer_id = request.data["customer_id"]
+      item.price = request.data["price"]
+      item.description = request.data["description"]
+      item.quantity = request.data["quantity"]
+      item.location = request.data["location"]
+      item.imagePath = request.data["imagePath"]
       item.save()
 
       return Response({}, status=status.HTTP_204_NO_CONTENT)
