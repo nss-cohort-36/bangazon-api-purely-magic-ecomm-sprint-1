@@ -18,12 +18,16 @@ from django.urls import include, path
 from rest_framework import routers
 from rest_framework.authtoken.views import obtain_auth_token
 from bangazonapi.models import *
+from bangazonapi.views import ProductTypes
 from bangazonapi.views import Orders
 from bangazonapi.views import register_user, login_user
+
+
+
 # from bangazon.bangazonapi.views import register_user, login_user
 
-
 router = routers.DefaultRouter(trailing_slash=False)
+router.register(r'product_types', ProductTypes, 'product_types')
 router.register(r'orders', Orders, 'order')
 
 
