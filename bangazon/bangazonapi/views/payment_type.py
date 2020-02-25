@@ -51,3 +51,39 @@ class PaymentTypes(ViewSet):
         serializer = PaymentTypeSerializer(paymenttypes, many=True, context={'request': request})
 
         return Response(serializer.data)
+
+    def create(self, request):
+        """Handle POST operations
+
+        Returns:
+            Response -- JSON serialized PaymentType instance
+        """
+        newpaymenttype = PaymentType()
+        newpaymenttype.merchantName = request.data["merchantName"]
+        newpaymenttype.accountNumber = request.data["accountNumber"]
+        newpaymenttype.expirationDate = request.data["expirationDate"]
+        newpaymenttype.createdAt = request.data["createdAt"]
+        newpaymenttype.customer_id = request.auth.user.customer.id
+        newpaymenttype.save()
+
+        serializer = PaymentTypeSerializer(newpaymenttype, context={'request': request})
+
+        return Response(serializer.data)
+
+    def destroy(self, request, pk=None):
+        """Handle DELETE requests for a  single payment-type
+
+        Returns:
+            Response -- 200, 404, or 500 status code
+        """
+        try:
+            paymenttype = PaymentType.objects.get(pk=pk)
+            paymenttype.delete()
+
+            return Response({}, status=status.HTTP_204_NO_CONTENT)
+
+        except PaymentType.DoesNotExist as ex:
+            return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
+
+        except Exception as ex:
+            return Response({'message': ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
