@@ -17,6 +17,7 @@ Including another URLconf
 from django.urls import include, path
 from rest_framework import routers
 from rest_framework.authtoken.views import obtain_auth_token
+from bangazonapi.views import PaymentTypes
 from bangazonapi.models import *
 from bangazonapi.views import ProductTypes
 from bangazonapi.views import Orders
@@ -29,6 +30,7 @@ from bangazonapi.views import OrderProduct
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'order_products', OrderProduct, 'order_product')
+router.register(r'paymenttypes', PaymentTypes, 'paymenttype')
 router.register(r'product_types', ProductTypes, 'product_types')
 router.register(r'orders', Orders, 'order')
 
