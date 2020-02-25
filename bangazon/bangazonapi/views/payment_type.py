@@ -87,3 +87,20 @@ class PaymentTypes(ViewSet):
 
         except Exception as ex:
             return Response({'message': ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+    def update(self, request, pk=None):
+        """Handle PUT requests for a payment_type
+
+        Returns:
+            Response -- Empty body with 204 status code
+        """
+        paymenttype = PaymentType.objects.get(pk=pk)
+        paymenttype.merchantName = request.data["merchantName"]
+        paymenttype.accountNumber = request.data["accountNumber"]
+        paymenttype.expirationDate = request.data["expirationDate"]
+        # paymenttype.createdAt = request.data["createdAt"]
+        # paymenttype.customer_id = request.auth.user.customer.id
+        paymenttype.save()
+
+
+        return Response({}, status=status.HTTP_204_NO_CONTENT)
