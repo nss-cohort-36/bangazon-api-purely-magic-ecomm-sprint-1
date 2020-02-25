@@ -32,7 +32,7 @@ from bangazonapi.views import Customers
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'order_products', OrderProduct, 'order_product')
 router.register(r'paymenttypes', PaymentTypes, 'paymenttype')
-router.register(r'product_types', ProductTypes, 'product_types')
+router.register(r'producttypes', ProductTypes, 'producttype')
 router.register(r'orders', Orders, 'order')
 router.register(r'customers', Customers, 'customer')
 
