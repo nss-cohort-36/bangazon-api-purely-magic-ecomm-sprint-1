@@ -41,13 +41,12 @@ class PaymentTypes(ViewSet):
         Returns:
             Response -- JSON serialized attraction attractions
         """
-        paymenttype = PaymentType.objects.all()
-        #get all paymenttypes
-        area = self.request.query_params.get('area', None)
-        #get all attractions but filtered by a parameter.  this instance area. area =?
-        #foo.com/attractions?area=? to the right is a query param
-        if area is not None:
-            paymenttypes = paymenttypes.filter(area__id=area)
+        ##get all payment types
+        paymenttypes = PaymentType.objects.all()
+        #foreign key goes here
+        customer = self.request.query_params.get('customer', None)
+        if customer is not None:
+            orders = orders.filter(customer_id=customer)
 
         serializer = PaymentTypeSerializer(paymenttypes, many=True, context={'request': request})
 
