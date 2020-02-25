@@ -61,7 +61,7 @@ class ProductTypes(ViewSet):
     def update(self, request, pk=None):
        
         product_type = ProductType.objects.get(pk=pk)
-        product_type.starttime = request.data['name']
+        product_type.name = request.data['name']
 
         product_type.save()
 
