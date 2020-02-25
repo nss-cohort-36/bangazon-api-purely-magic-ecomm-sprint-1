@@ -17,16 +17,33 @@ Including another URLconf
 from django.urls import include, path
 from rest_framework import routers
 from rest_framework.authtoken.views import obtain_auth_token
+<<<<<<< HEAD
 from bangazonapi.views import PaymentTypes
 from bangazonapi.models import *
+=======
+from bangazonapi.models import *
+from bangazonapi.views import ProductTypes
+from bangazonapi.views import Orders
+from bangazonapi.views import register_user, login_user
+>>>>>>> master
 
+
+
+# from bangazon.bangazonapi.views import register_user, login_user
 
 router = routers.DefaultRouter(trailing_slash=False)
+<<<<<<< HEAD
 router.register(r'paymenttypes', PaymentTypes, 'paymenttype')
+=======
+router.register(r'product_types', ProductTypes, 'product_types')
+router.register(r'orders', Orders, 'order')
+>>>>>>> master
 
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('register/', register_user),
+    path('login/', login_user),
     path('api-token-auth/', obtain_auth_token),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
