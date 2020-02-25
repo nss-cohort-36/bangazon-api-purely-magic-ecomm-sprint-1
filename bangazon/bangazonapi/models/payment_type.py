@@ -4,7 +4,7 @@ from safedelete.models import SafeDeleteModel
 from safedelete.models import SOFT_DELETE
 
 class PaymentType(models.Model):
-
+#test
     merchantName = models.CharField(max_length=25)
     accountNumber = models.CharField(max_length=25)
     expirationDate = models.DateTimeField()
