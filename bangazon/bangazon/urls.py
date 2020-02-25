@@ -29,7 +29,7 @@ from bangazonapi.views import register_user, login_user
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'paymenttypes', PaymentTypes, 'paymenttype')
-router.register(r'product_types', ProductTypes, 'product_types')
+router.register(r'producttypes', ProductTypes, 'producttype')
 router.register(r'orders', Orders, 'order')
 
 
