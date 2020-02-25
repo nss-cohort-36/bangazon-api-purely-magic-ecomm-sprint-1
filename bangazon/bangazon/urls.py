@@ -19,7 +19,6 @@ from rest_framework import routers
 from rest_framework.authtoken.views import obtain_auth_token
 from bangazonapi.views import Products
 from bangazonapi.models import *
-from bangazonapi.models import *
 from bangazonapi.views import ProductTypes
 from bangazonapi.views import Orders
 from bangazonapi.views import register_user, login_user
