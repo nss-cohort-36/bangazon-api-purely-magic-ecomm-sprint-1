@@ -8,7 +8,7 @@ class Order(models.Model):
 
     createdAt = models.DateTimeField(auto_now=False, auto_now_add=True)
     customer = models.ForeignKey("Customer", on_delete=models.DO_NOTHING)
-    paymentType = models.ForeignKey("PaymentType", on_delete=models.DO_NOTHING)
+    paymentType = models.ForeignKey("PaymentType", on_delete=models.DO_NOTHING, null=True)
 
 
     def __str__(self):
