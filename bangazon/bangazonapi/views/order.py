@@ -1,10 +1,13 @@
 """View module for handling requests about intineraries"""
+import json
 from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers
 from rest_framework import status
-from bangazonapi.models import Customer, PaymentType, Order
+from rest_framework.decorators import action
+from django.contrib.auth.models import User
+from bangazonapi.models import Customer, PaymentType, Order, OrderProduct, Product
 
 class OrderSerializer(serializers.HyperlinkedModelSerializer):
     """JSON serializer for intineraries
@@ -36,11 +39,16 @@ class Orders(ViewSet):
             return HttpResponseServerError(ex)
 
     def create(self, request):
+        req_body = json.loads(request.body.decode())
         new_order = Order()
         new_order.customer_id = request.auth.user.customer.id
-        new_order.paymentType_id = request.data["paymentType_id"]
-
         new_order.save()
+
+        new_orderproduct = OrderProduct()
+        products = Product.objects.all()
+        new_orderproduct.order_id = new_order.id 
+        new_orderproduct.product_id = req_body['product_id']
+        new_orderproduct.save()
 
         serializer = OrderSerializer(new_order, context={'request': request})
 
