@@ -26,7 +26,7 @@ class Users(ViewSet):
 
     #handles Get request to list ALL product_types
     def list(self, request):
-        user = request.user.objects.all()
+        user = User.objects.all()
 
         serializer = UserSerializer(
             user, many = True, context={'request':request})
