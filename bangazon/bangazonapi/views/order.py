@@ -59,7 +59,7 @@ class Orders(ViewSet):
         if paymentType is not None:
             orders = orders.filter(paymentType__id=paymentType)
         if customer is not None:
-            orders = orders.filter(customer__id=customer)
+            orders = orders.filter(customer_id=customer)
 
         serializer = OrderSerializer(orders, many=True, context={'request': request})
 
