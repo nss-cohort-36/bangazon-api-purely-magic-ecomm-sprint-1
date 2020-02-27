@@ -3,9 +3,9 @@
 Setup
 The first thing to do is to clone the repository:
 
-git clone https://github.com/nss-cohort-36/bangazon-api-purely-magic-ecomm-sprint-1 
-cd bangazon-api-purely-magic-ecomm-sprint-1
-cd bangazon
+$ git clone https://github.com/nss-cohort-36/bangazon-api-purely-magic-ecomm-sprint-1 
+$ cd bangazon-api-purely-magic-ecomm-sprint-1
+$ cd bangazon
 Create a virtual environment to install dependencies in and activate it:
 
 python -m venvBangazonEnv
