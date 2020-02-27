@@ -8,6 +8,7 @@ from rest_framework import status
 from rest_framework.decorators import action
 from django.contrib.auth.models import User
 from bangazonapi.models import Customer, PaymentType, Order, OrderProduct, Product
+from .product import ProductSerializer
 
 class OrderSerializer(serializers.HyperlinkedModelSerializer):
     """JSON serializer for intineraries
@@ -67,7 +68,7 @@ class Orders(ViewSet):
         if paymentType is not None:
             orders = orders.filter(paymentType__id=paymentType)
         if customer is not None:
-            orders = orders.filter(customer_id=customer)
+            orders = orders.filter(customer__id=customer)
 
         serializer = OrderSerializer(orders, many=True, context={'request': request})
 
@@ -90,3 +91,4 @@ class Orders(ViewSet):
 
         except Exception as ex:
             return Response({'message': ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+

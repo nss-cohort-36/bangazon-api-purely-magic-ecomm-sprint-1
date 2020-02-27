@@ -2,9 +2,11 @@
 from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
+from rest_framework.decorators import action
 from rest_framework import serializers
 from rest_framework import status
-from bangazonapi.models import Customer, Product, ProductType
+from bangazonapi.models import Customer, Product, ProductType, Order
+from rest_framework.decorators import action
 
 class ProductSerializer(serializers.HyperlinkedModelSerializer):
     """JSON serializer for products
@@ -18,7 +20,7 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
             view_name='product',
             lookup_field='id'
         )
-        fields = ('id', 'url', 'name', 'customer', 'productType', 'price', 'description', 'quantity', 'location', 'imagePath', 'createdAt')
+        fields = ('id', 'url', 'name', 'customer', 'productType', 'price', 'description', 'quantity', 'location', 'imagePath', 'createdAt',)
         # fields = ('id', 'url', 'name', 'customer',)
         depth = 2
 
@@ -62,22 +64,23 @@ class Products(ViewSet):
             Response -- JSON serialized list of products
         """
         items = Product.objects.all()
-        # product_list = []
 
-        # for item in items:
-        #    new_product = Product()
-        #    new_product.productType_id = ProductType.objects.get(pk=item.productType_id)
-        #    new_product.id = item.id
-        #    new_product.name = item.name
-        #    new_product.customer_id =  Customer.objects.get(pk=item.customer_id)
-        #    product_list.append(new_product)
-
-
-
-        # test
         customer = self.request.query_params.get('customer', None)
+        location = self.request.query_params.get('location', None)
+        type = self.request.query_params.get('type', None)
+
         if customer is not None:
             items = items.filter(customer_id=customer)
+
+        # Example GET request:
+        #   http://localhost:8000/products?location=louisville
+        if location is not None:
+            items = items.filter(location__contains=location)
+
+        # Example request:
+        #   http://localhost:8000/products?productType=2
+        if type is not None:
+            items = items.filter(productType__id=type)
 
         serializer = ProductSerializer(
             items,
@@ -121,3 +124,17 @@ class Products(ViewSet):
 
         except Exception as ex:
             return Response({'message': ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+    # @action(methods=['get'], detail=False)
+    # def cart(self, request):
+
+    #     current_user = Customer.objects.get(user=request.auth.user)
+
+    #     try:
+    #         open_order = Order.objects.get(customer=current_user, payment_type=None)
+    #         products_on_order = Product.objects.filter(cart__order=open_order)
+    #     except Order.DoesNotExist as ex:
+    #         return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
+
+    #     serializer = ProductSerializer(products_on_order, many=True, context={'request': request})
+    #     return Response(serializer.data)
