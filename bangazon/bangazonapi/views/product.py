@@ -67,7 +67,8 @@ class Products(ViewSet):
 
         customer = self.request.query_params.get('customer', None)
         location = self.request.query_params.get('location', None)
-        type = self.request.query_params.get('type', None)
+        type = self.request.query_params.get('productType', None)
+        quantity = self.request.query_params.get('quantity', None)
 
         if customer is not None:
             items = items.filter(customer_id=customer)
@@ -81,6 +82,12 @@ class Products(ViewSet):
         #   http://localhost:8000/products?productType=2
         if type is not None:
             items = items.filter(productType__id=type)
+
+        # Example request:
+        #   http://localhost:8000/products?quantity=20
+        if quantity is not None:
+            items = items.order_by("-created_date")[:int(quantity)]
+
 
         serializer = ProductSerializer(
             items,
@@ -125,16 +132,16 @@ class Products(ViewSet):
         except Exception as ex:
             return Response({'message': ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-    # @action(methods=['get'], detail=False)
-    # def cart(self, request):
+    @action(methods=['get'], detail=False)
+    def cart(self, request):
 
-    #     current_user = Customer.objects.get(user=request.auth.user)
+        current_user = Customer.objects.get(user=request.auth.user)
 
-    #     try:
-    #         open_order = Order.objects.get(customer=current_user, payment_type=None)
-    #         products_on_order = Product.objects.filter(cart__order=open_order)
-    #     except Order.DoesNotExist as ex:
-    #         return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
+        try:
+            open_order = Order.objects.get(customer=current_user, paymentType=None)
+            products_on_order = Product.objects.filter(cart__order=open_order)
+        except Order.DoesNotExist as ex:
+            return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
 
-    #     serializer = ProductSerializer(products_on_order, many=True, context={'request': request})
-    #     return Response(serializer.data)
+        serializer = ProductSerializer(products_on_order, many=True, context={'request': request})
+        return Response(serializer.data)
