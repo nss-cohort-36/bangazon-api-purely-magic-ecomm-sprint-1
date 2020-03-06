@@ -1,4 +1,4 @@
-# import json
+import json
 from rest_framework import status
 from django.test import TestCase
 from django.urls import reverse
@@ -24,20 +24,20 @@ class testOrderProducts(TestCase):
             self.quantity = 9
             self.location = "Brentwood"
             self.imagePath = ""
-            self.created_at = "2019-12-12T00:00:00Z"
-            self.producType_id = ProductType.objects.create(name=self.name)
+            self.createdAt = "2019-12-12T00:00:00Z"
+            self.productType_id = ProductType.objects.create(name=self.name)
             self.name = "medicinal"
             self.customer_id = 1
             self.productType_id = 1
             self.product_id = Product.objects.create(name=self.name, price=self.price, description=self.description, 
-            quantity=self.quantity, productType_id=self.productType_id, location=self.location, imagePath=self.imagePath, created_at=self.created_at, customer_id=self.customer_id)
+            quantity=self.quantity, productType_id=self.productType_id, location=self.location, imagePath=self.imagePath, createdAt=self.createdAt, customer_id=self.customer_id)
             # *** Payment Type instances ***
             self.paymentType = 1
             self.createdAt = "2019-12-12T00:00:00Z"
             self.order_id = Order.objects.create(customer_id=self.customer_id, createdAt=self.createdAt)
 
 
-            # define an orderproduct to be sent to the API
+            # ***CREATE*** 
         def test_post_order_product(self):
             new_orderproduct = {
                 "order_id": 1,
@@ -59,6 +59,7 @@ class testOrderProducts(TestCase):
             self.assertEqual(OrderProduct.objects.get().order_id, 1)
 
 
+            # ***READ***
         def test_get_order_product(self):
             new_orderproduct = OrderProduct.objects.create(
                 order_id=1,
@@ -78,7 +79,7 @@ class testOrderProducts(TestCase):
             self.assertEqual(len(response.data), 1)
 
             # test the contents of the data before it's serialized into JSON
-            self.assertEqual(response.data[0]["order_id"], 1)
+            self.assertEqual(response.data[0]['id'], 1)
             
             # self.assertIn( new_orderproduct.order_id, response.content)
 
