@@ -34,6 +34,11 @@ class Products(ViewSet):
         try:
             product = Product.objects.get(pk=pk)
             serializer = ProductSerializer(product, context={'request': request})
+            
+            limit = self.request.query_params.get('limit')
+            
+            
+            
             return Response(serializer.data)
         except Exception as ex:
             return HttpResponseServerError(ex)
@@ -86,7 +91,7 @@ class Products(ViewSet):
         # Example request:
         #   http://localhost:8000/products?quantity=20
         if quantity is not None:
-            items = items.order_by("-created_date")[:int(quantity)]
+            items = items.order_by("-createdAt")[:int(quantity)]
 
 
         serializer = ProductSerializer(
