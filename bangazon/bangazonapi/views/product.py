@@ -48,7 +48,7 @@ class Products(ViewSet):
         new_product.description = request.data["description"]
         new_product.quantity = request.data["quantity"]
         new_product.location = request.data["location"]
-        new_product.imagePath = request.data["imagePath"]
+        # new_product.imagePath = request.data["imagePath"]
 
         new_product.save()
 
@@ -64,11 +64,12 @@ class Products(ViewSet):
             Response -- JSON serialized list of products
         """
         items = Product.objects.all()
-
+        #creating the parameters to filter by
         customer = self.request.query_params.get('customer', None)
         location = self.request.query_params.get('location', None)
         type = self.request.query_params.get('productType', None)
         quantity = self.request.query_params.get('quantity', None)
+        name = self.request.query_params.get('name', None)
 
         if customer is not None:
             items = items.filter(customer_id=customer)
@@ -88,8 +89,13 @@ class Products(ViewSet):
         if quantity is not None:
             items = items.order_by("-created_date")[:int(quantity)]
 
+        # Example request:
+        #   http://localhost:8000/products?name="white strips"
+        if name is not None:
+            items = items.filter(name__contains=name)
 
-        serializer = ProductSerializer(
+
+        serializer = ProductSerializer(                             
             items,
             many=True,
             context={'request': request}
