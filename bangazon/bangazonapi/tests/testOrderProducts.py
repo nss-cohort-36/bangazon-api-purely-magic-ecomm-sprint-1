@@ -84,22 +84,5 @@ class testOrderProducts(TestCase):
             # self.assertIn( new_orderproduct.order_id, response.content)
 
 
-        # ***DESTROY***
-        def test_delete_order_product(self):
-            new_orderproduct = OrderProduct.objects.create(
-                order_id=1,
-                product_id=1,
-            )
-        # Delete a product. As shown in our post and get tests above, new_product
-        # will be the only product in the database, and will have an id of 1
-            response = self.client.delete(
-                reverse('orderproduct-detail', kwargs={'pk': 1}), HTTP_AUTHORIZATION='Token ' + str(self.token))
-            self.assertEqual(response.status_code, 204)
-        # Confirm that the product is NOT in the database, which means no products will be
-        # response = self.client.get(reverse('product-list'), HTTP_AUTHORIZATION='Token ' + str(self.token))
-        # self.assertEqual(len(response.data), 0)
-            response = self.client.get(reverse('orderproduct-list'), HTTP_AUTHORIZATION='Token ' + str(self.token))
-            self.assertEqual(len(response.data), 0)
-
 if __name__ == '__main__':
     unittest.main()
