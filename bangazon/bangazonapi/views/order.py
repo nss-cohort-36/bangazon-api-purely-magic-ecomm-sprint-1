@@ -40,7 +40,7 @@ class Orders(ViewSet):
             return HttpResponseServerError(ex)
 
     def create(self, request):
-        req_body = json.loads(request.body.decode())
+        # req_body = json.loads(request.body.decode())
         new_order = Order()
         new_order.customer_id = request.auth.user.customer.id
         new_order.save()
@@ -48,7 +48,7 @@ class Orders(ViewSet):
         new_orderproduct = OrderProduct()
         products = Product.objects.all()
         new_orderproduct.order_id = new_order.id 
-        new_orderproduct.product_id = req_body['product_id']
+        new_orderproduct.product_id = request.data['product_id']
         new_orderproduct.save()
 
         serializer = OrderSerializer(new_order, context={'request': request})
