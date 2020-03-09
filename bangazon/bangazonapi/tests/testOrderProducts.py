@@ -61,10 +61,10 @@ class testOrderProducts(TestCase):
 
             # ***READ***
         def test_get_order_product(self):
-            new_orderproduct = {
-                "order_id": 1,
-                "product_id": 1
-            }                   
+            new_orderproduct = OrderProduct.objects.create(
+                order_id=1,
+                product_id=1,
+            )
 
 
             # Now we can grab all the area (meaning the one we just created) from the db
@@ -86,10 +86,10 @@ class testOrderProducts(TestCase):
 
         # ***DESTROY***
         def test_delete_order_product(self):
-            new_orderproduct = Product.objects.create(
+            new_orderproduct = OrderProduct.objects.create(
                 order_id=1,
                 product_id=1,
-        )
+            )
         # Delete a product. As shown in our post and get tests above, new_product
         # will be the only product in the database, and will have an id of 1
             response = self.client.delete(
