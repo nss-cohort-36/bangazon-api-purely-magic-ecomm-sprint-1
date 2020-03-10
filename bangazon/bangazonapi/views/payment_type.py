@@ -17,7 +17,7 @@ class PaymentTypeSerializer(serializers.HyperlinkedModelSerializer):
             view_name='paymentType',
             lookup_field='id'
         )
-        fields = ('id', 'merchantName', 'accountNumber', 'expirationDate', 'createdAt', 'customer_id')
+        fields = ('id', 'name', 'number', 'expiry', 'customer_id')
         # depth = 2
 
 class PaymentTypes(ViewSet):
@@ -59,10 +59,10 @@ class PaymentTypes(ViewSet):
             Response -- JSON serialized PaymentType instance
         """
         newpaymenttype = PaymentType()
-        newpaymenttype.merchantName = request.data["merchantName"]
-        newpaymenttype.accountNumber = request.data["accountNumber"]
-        newpaymenttype.expirationDate = request.data["expirationDate"]
-        newpaymenttype.createdAt = request.data["createdAt"]
+        newpaymenttype.name = request.data["name"]
+        newpaymenttype.number = request.data["number"]
+        newpaymenttype.expiry = request.data["expiry"]
+        # newpaymenttype.createdAt = request.data["createdAt"]
         newpaymenttype.customer_id = request.auth.user.customer.id
         newpaymenttype.save()
 
@@ -95,11 +95,11 @@ class PaymentTypes(ViewSet):
             Response -- Empty body with 204 status code
         """
         paymenttype = PaymentType.objects.get(pk=pk)
-        paymenttype.merchantName = request.data["merchantName"]
-        paymenttype.accountNumber = request.data["accountNumber"]
-        paymenttype.expirationDate = request.data["expirationDate"]
+        paymenttype.name = request.data["name"]
+        paymenttype.number = request.data["number"]
+        paymenttype.expiry = request.data["expiry"]
         # paymenttype.createdAt = request.data["createdAt"]
-        # paymenttype.customer_id = request.auth.user.customer.id
+        paymenttype.customer_id = request.auth.user.customer.id
         paymenttype.save()
 
 

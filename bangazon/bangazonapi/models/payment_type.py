@@ -5,17 +5,17 @@ from safedelete.models import SOFT_DELETE
 
 class PaymentType(models.Model):
 #test
-    merchantName = models.CharField(max_length=25)
-    accountNumber = models.CharField(max_length=25)
-    expirationDate = models.DateTimeField()
+    name = models.CharField(max_length=25)
+    number = models.CharField(max_length=25)
+    expiry = models.CharField(max_length=25)
     customer = models.ForeignKey("customer", on_delete=models.DO_NOTHING)
-    createdAt = models.DateTimeField()
+    # createdAt = models.DateTimeField()
 
     def __str__(self):
-        return f'{self.merchantName}'
+        return f'{self.name}'
 
     class Meta:
-        ordering = ("merchantName",)
+        ordering = ("name",)
 
 
 
