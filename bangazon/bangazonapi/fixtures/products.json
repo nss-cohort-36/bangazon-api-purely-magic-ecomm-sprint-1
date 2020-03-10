@@ -31,6 +31,21 @@
     },
     {
         "model": "bangazonapi.Product",
+        "pk": 1,
+        "fields": {
+            "name": "teeth",
+            "customer": 1,
+            "price": 11,
+            "description": "sharp teeth",
+            "quantity": 9,
+            "location": "Inglewood",
+            "imagePath": "",
+            "createdAt": "2019-12-24",
+            "productType": 1
+        }
+    },
+    {
+        "model": "bangazonapi.Product",
         "pk": 3,
         "fields": {
             "name": "white strips",
