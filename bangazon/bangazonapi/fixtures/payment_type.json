@@ -3,33 +3,33 @@
         "model": "bangazonapi.PaymentType",
         "pk": 1,
         "fields": {
-            "merchantName": "O Positive",
-            "accountNumber": "1234",
-            "expirationDate": "2021-01-01",
+            "name": "Charles Jackson",
+            "number": "1234123412341234",
+            "expiry": "2021-01-01",
             "customer": 1,
-            "createdAt": "2019-12-12"
+            "cvc": "196"
         }
     },
     {
         "model": "bangazonapi.PaymentType",
         "pk": 2,
         "fields": {
-            "merchantName": "A Negative",
-            "accountNumber": "99988833",
-            "expirationDate": "2024-01-01",
+            "name": "Charles Jackson",
+            "number": "9998883399999999",
+            "expiry": "2024-01-01",
             "customer": 1,
-            "createdAt": "2019-01-01"
+            "cvc": "555"
         }
     },
     {
         "model": "bangazonapi.PaymentType",
         "pk": 3,
         "fields": {
-            "merchantName": "True Blood",
-            "accountNumber": "1429",
-            "expirationDate": "2022-01-01",
+            "name": "Charles Jackson",
+            "number": "1429142914291429",
+            "expiry": "2022-01-01",
             "customer": 1,
-            "createdAt": "2020-01-12"
+            "cvc": "719"
         }
     }
 ]
