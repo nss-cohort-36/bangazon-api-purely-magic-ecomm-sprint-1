@@ -8,6 +8,7 @@ class PaymentType(models.Model):
     name = models.CharField(max_length=25)
     number = models.CharField(max_length=25)
     expiry = models.CharField(max_length=25)
+    cvc = models.CharField(max_length=25)
     customer = models.ForeignKey("customer", on_delete=models.DO_NOTHING)
     # createdAt = models.DateTimeField()
 
