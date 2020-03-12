@@ -28,8 +28,6 @@ from bangazonapi.views import Customers
 from bangazonapi.views import Users
 
 
-
-
 # from bangazon.bangazonapi.views import register_user, login_user
 
 router = routers.DefaultRouter(trailing_slash=False)
